@@ -1,6 +1,5 @@
-package com.blog.search.infra;
+package com.blog.search.infra.client;
 
-import com.blog.search.infra.client.KakaoBlogClient;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,7 +14,6 @@ public class KakaoClientTest {
 
     @Value("${client.kakao.authorization}")
     String authorization;
-
 
     @Test
     void callTest() {

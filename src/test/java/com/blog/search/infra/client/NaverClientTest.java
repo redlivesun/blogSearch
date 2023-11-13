@@ -1,6 +1,5 @@
-package com.blog.search.infra;
+package com.blog.search.infra.client;
 
-import com.blog.search.infra.client.NaverBlogClient;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
