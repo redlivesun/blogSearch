@@ -9,4 +9,7 @@ public record KakaoBlogDTO(List<KakaoBlogDocumentDTO> documents,
         return new KakaoBlogDTO(null, null);
     }
 
+    public boolean isEmpty() {
+        return documents == null || documents().isEmpty() || meta == null;
+    }
 }

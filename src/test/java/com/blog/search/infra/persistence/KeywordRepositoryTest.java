@@ -1,6 +1,6 @@
 package com.blog.search.infra.persistence;
 
-import com.blog.search.domain.Keyword;
+import com.blog.search.domain.keyword.Keyword;
 import com.blog.search.domain.exception.KeywordNotFoundException;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
@@ -19,11 +19,15 @@ public class KeywordRepositoryTest {
     @BeforeEach
     void beforeEach() {
         var keyword = getTestMock(TEST_KEYWORD_1);
-        keywordRepository.save(keyword);
+        var result = keywordRepository.findKeywordByKeyword(TEST_KEYWORD_1);
+        if (result.isEmpty()) {
+            keywordRepository.save(keyword);
+        }
     }
 
     @Test
     void findOneTest() {
+        System.out.println(keywordRepository.findAll());
         //given, when
         var keyword = keywordRepository.findKeywordByKeyword(TEST_KEYWORD_1).orElseThrow(KeywordNotFoundException::new);
         //then
@@ -54,9 +58,6 @@ public class KeywordRepositoryTest {
     }
 
     private Keyword getTestMock(String testKeyword1) {
-        var keyword = new Keyword();
-        keyword.setKeyword(testKeyword1);
-        keyword.setCount(1);
-        return keyword;
+        return new Keyword(testKeyword1, 1);
     }
 }

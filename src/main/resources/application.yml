@@ -4,10 +4,21 @@ spring:
     driver-class-name: org.h2.Driver
     username: sa
     password:
+
+
   cloud:
     openfeign:
       circuitbreaker:
         enabled: true
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: create-drop
+    properties:
+      hibernate:
+        format_sql: true
+    defer-datasource-initialization: true
+
 
 client:
   kakao:
@@ -15,3 +26,7 @@ client:
   naver:
     clientId: E1qAJ8z2ojKD643WFfEX
     clientSecret: jsDrQuGbA6
+
+logging:
+  level:
+    org.hibernate.sql: debug
