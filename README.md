@@ -97,6 +97,7 @@
 
 ## API TEST
 1. https://github.com/redlivesun/blogSearch/blob/master/jar/search.jar jar 파일 다운
+   2. https://drive.google.com/file/d/1XbW_wmOXlW1wgcLPbv7QuruwzL67wlrr/view?usp=sharing
 2. java -jar search.jar
 3. API Test
    - Blog 검색
