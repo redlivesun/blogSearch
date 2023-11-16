@@ -16,7 +16,7 @@ public class NaverBlogFallbackFactory implements FallbackFactory<NaverBlogClient
                       display,
                       start,
                       sort,
-                      cause.getStackTrace());
+                      cause.getMessage());
             return NaverBlogDTO.emptyOf();
         };
     }

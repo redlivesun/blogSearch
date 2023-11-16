@@ -16,7 +16,7 @@ public class KakaoBlogFallbackFactory implements FallbackFactory<KakaoBlogClient
                       size,
                       page,
                       sort,
-                      cause.getStackTrace());
+                      cause.getMessage());
             return KakaoBlogDTO.emptyOf();
         };
     }

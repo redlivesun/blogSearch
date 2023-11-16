@@ -1,6 +1,6 @@
 package com.blog.search.infra.client;
 
-import com.blog.search.controller.SortType;
+import com.blog.search.controller.SearchRequestParam;
 import com.blog.search.infra.client.dto.KakaoBlogDTO;
 import com.blog.search.infra.client.dto.NaverBlogDTO;
 import lombok.RequiredArgsConstructor;
@@ -24,21 +24,22 @@ public class BlogApiServiceImpl implements BlogApiService {
     String clientSecret;
 
     @Override
-    public KakaoBlogDTO getKakaoBlogs(String keyword, int page, int size, SortType sortType) {
-        return kakaoBlogClient.getBlogs(authorization, keyword, size, page, sortType.getKakaoSortType());
+    public KakaoBlogDTO getKakaoBlogs(SearchRequestParam requestParam) {
+        return kakaoBlogClient.getBlogs(authorization,
+                                        requestParam.query(),
+                                        requestParam.size(),
+                                        requestParam.page(),
+                                        requestParam.sort().getKakaoSortType());
     }
 
     @Override
-    public NaverBlogDTO getNaverBlogs(String keyword, int page, int size, SortType sortType) {
+    public NaverBlogDTO getNaverBlogs(SearchRequestParam requestParam) {
         return naverBlogClient.getBlogs(clientId,
                                         clientSecret,
-                                        keyword,
-                                        size,
-                                        getStart(page, size),
-                                        sortType.getNaverSortType());
+                                        requestParam.query(),
+                                        requestParam.size(),
+                                        requestParam.getStart(),
+                                        requestParam.sort().getNaverSortType());
     }
 
-    private int getStart(int page, int size) {
-        return page * size;
-    }
 }

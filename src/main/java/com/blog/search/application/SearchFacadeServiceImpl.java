@@ -1,6 +1,6 @@
 package com.blog.search.application;
 
-import com.blog.search.controller.SortType;
+import com.blog.search.controller.SearchRequestParam;
 import com.blog.search.domain.blog.Blogs;
 import com.blog.search.domain.blog.service.BlogService;
 import com.blog.search.domain.keyword.Keywords;
@@ -16,9 +16,9 @@ public class SearchFacadeServiceImpl implements SearchFacadeService {
     private final KeywordService keywordService;
 
     @Override
-    public Blogs getBlogs(String query, int page, int size, SortType sortType) {
-        keywordService.upsertKeyword(query);
-        return blogService.getBlogs(query, page, size, sortType);
+    public Blogs getBlogs(SearchRequestParam requestParam) {
+        keywordService.upsertKeyword(requestParam.query());
+        return blogService.getBlogs(requestParam);
     }
 
     @Override

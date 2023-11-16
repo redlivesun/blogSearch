@@ -1,7 +1,7 @@
 package com.blog.search.infra.persistence;
 
 import com.blog.search.domain.keyword.Keyword;
-import com.blog.search.domain.exception.KeywordNotFoundException;
+import com.blog.search.exception.KeywordNotFoundException;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -11,7 +11,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 @SpringBootTest
 public class KeywordRepositoryTest {
 
-    private static final String TEST_KEYWORD_1 = "청파동";
+    private static final String TEST_KEYWORD_1 = "뉴욕";
 
     @Autowired
     KeywordRepository keywordRepository;
@@ -27,7 +27,6 @@ public class KeywordRepositoryTest {
 
     @Test
     void findOneTest() {
-        System.out.println(keywordRepository.findAll());
         //given, when
         var keyword = keywordRepository.findKeywordByKeyword(TEST_KEYWORD_1).orElseThrow(KeywordNotFoundException::new);
         //then
@@ -49,10 +48,10 @@ public class KeywordRepositoryTest {
     @Test
     void saveTest() {
         //given
-        Keyword keyword = getTestMock("용산구");
+        Keyword keyword = getTestMock("잠실");
         keywordRepository.save(keyword);
         //when
-        var result = keywordRepository.findKeywordByKeyword("용산구").orElseThrow(KeywordNotFoundException::new);
+        var result = keywordRepository.findKeywordByKeyword("잠실").orElseThrow(KeywordNotFoundException::new);
         //then
         Assertions.assertThat(result).isNotNull();
     }
