@@ -1,4 +1,4 @@
-# 블로그 검색 서비스
+# 블로그 검색 서비스 (https://github.com/redlivesun/blogSearch)
 
 ## 서비스 기능
 1. 블로그 검색
