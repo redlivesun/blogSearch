@@ -38,7 +38,7 @@ public class SearchController {
         return service.getBlogs(SearchRequestParam.of(query, size, page, sort));
     }
 
-    @GetMapping("/search/v1/keywords")
+    @GetMapping("/search/v1/hot-keywords")
     public Keywords getTop10Keywords() {
         return service.getTop10Keywords();
     }

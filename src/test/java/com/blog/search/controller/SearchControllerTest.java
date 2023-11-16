@@ -79,6 +79,6 @@ public class SearchControllerTest {
     @Test
     void getKeywordsTest() throws Exception {
         mvc.perform(MockMvcRequestBuilders.get("/search/v1/blogs").param("query", "용산구")).andExpect(status().isOk());
-        mvc.perform(MockMvcRequestBuilders.get("/search/v1/keywords")).andExpect(status().isOk());
+        mvc.perform(MockMvcRequestBuilders.get("/search/v1/hot-keywords")).andExpect(status().isOk());
     }
 }

@@ -6,7 +6,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import java.util.List;
 
-public record Blogs(List<Blog> result) {
+public record Blogs(List<Blog> blogs) {
 
     public static Blogs emptyOf() {
         return new Blogs(List.of());
@@ -28,6 +28,6 @@ public record Blogs(List<Blog> result) {
 
     @JsonIgnore
     public boolean isEmpty() {
-        return result == null || result.isEmpty();
+        return blogs == null || blogs.isEmpty();
     }
 }

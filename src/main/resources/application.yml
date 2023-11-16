@@ -14,14 +14,12 @@ spring:
   cloud:
     openfeign:
       circuitbreaker:
-        enabled: true
+        enabled: true                 #resilience4j
       httpclient:
-        max-connections: 200
-        max-connections-per-route: 400
+        max-connections: 200            #http client 최대 연결 수
+        max-connections-per-route: 400  #http client 라우트당 최대 연결 수
         hc5:
-          enabled: true
-          pool-reuse-policy: fifo
-          pool-concurrency-policy: strict
+          enabled: true                 #http client 5 연결 풀 재사용 정책
 
   jpa:
     show-sql: true
